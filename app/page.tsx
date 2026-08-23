@@ -3,6 +3,7 @@ import ExploreSection from "@/components/ExploreSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 import SubscribeSection from "@/components/SubscribeSection";
 import TopicsSection from "@/components/TopicsSection";
 
@@ -10,17 +11,33 @@ const navLinks = [
   { label: "Explore", href: "#explore" },
   { label: "Topics", href: "#topics" },
   { label: "Community", href: "#community" },
-  { label: "Subscribe", href: "#subscribe" },
 ];
 
 const topicLinks = [
   { label: "Featured", href: "#hero" },
-  { label: "Nature", href: "#topics" },
+  { label: "Summer", href: "#explore" },
   { label: "Wallpapers", href: "#topics" },
-  { label: "Travel", href: "#topics" },
-  { label: "Architecture", href: "#topics" },
-  { label: "People", href: "#topics" },
+  { label: "3D Renders", href: "#topics" },
+  { label: "Nature", href: "#topics" },
+  { label: "Textures", href: "#topics" },
   { label: "Film", href: "#topics" },
+  { label: "Architecture", href: "#topics" },
+  { label: "Street Photography", href: "#topics" },
+  { label: "Experimental", href: "#explore" },
+  { label: "Travel", href: "#topics" },
+  { label: "People", href: "#topics" },
+];
+
+const sidebarLinks = [
+  { label: "Photos", href: "#explore", icon: "photos" as const },
+  { label: "Contribute", href: "#community", icon: "contribute" as const },
+  { label: "Explore", href: "#explore", icon: "explore" as const },
+  { label: "Collections", href: "#topics", icon: "collections" as const },
+  { label: "Downloads", href: "#community", icon: "download" as const },
+  { label: "Bookmarks", href: "#topics", icon: "bookmark" as const },
+  { label: "Account", href: "#subscribe", icon: "account" as const },
+  { label: "Language", href: "#hero", icon: "language" as const },
+  { label: "More", href: "#hero", icon: "more" as const },
 ];
 
 const footerColumns = [
@@ -55,67 +72,106 @@ const footerColumns = [
 
 const hero = {
   id: "hero",
+  brand: "Unsplash",
   headline: "The internet’s source for visuals.",
-  subheadline: "Powered by creators everywhere.",
+  headlineLine2: "Powered by creators everywhere.",
   searchPlaceholder: "Search photos and illustrations",
-  trendingLabel: "See trending searches",
-  trendingHref: "#explore",
-  sponsorLabel: "Supported by Squarespace",
-  image: {
-    src: "https://images.unsplash.com/photo-1501785888041-af3ee285d569?auto=format&fit=crop&w=2400&q=80",
-    alt: "Misty mountain lake surrounded by evergreen forest",
-  },
-  photographer: {
-    name: "Pietro De Grandi",
-    href: "#community",
-  },
+  promoTitle: "New premium visuals every month.",
+  promoSubtitle: "Available to Unsplash+\nmembers.",
+  promoCta: "Get Unsplash+",
+  promoHref: "#subscribe",
+  promoImages: [
+    {
+      src: "/images/cover-nature.jpg",
+      alt: "",
+      className: "-top-6 -left-8 h-40 w-32 -rotate-12 opacity-45 blur-md",
+    },
+    {
+      src: "/images/photo-city.jpg",
+      alt: "",
+      className: "-top-8 right-2 h-36 w-28 rotate-12 opacity-40 blur-md",
+    },
+    {
+      src: "/images/cover-3d.jpg",
+      alt: "",
+      className: "-bottom-10 left-2 h-36 w-32 -rotate-6 opacity-40 blur-sm",
+    },
+    {
+      src: "/images/photo-flower.jpg",
+      alt: "Floral still life",
+      className: "top-5 left-5 z-10 h-48 w-28",
+    },
+    {
+      src: "/images/cover-people.jpg",
+      alt: "Portrait study",
+      className: "right-5 bottom-3 z-20 h-52 w-28 rotate-[8deg]",
+    },
+  ],
 };
 
 const explorePhotos = [
   {
-    src: "https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Sunlight through evergreen forest",
-    photographer: "David Marcu",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Sunbeams in a dense green forest",
-    photographer: "Veeterzy",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80",
+    src: "/images/photo-shore.jpg",
     alt: "Tropical beach with clear turquoise water",
     photographer: "Sean Oulashin",
+    width: 1200,
+    height: 900,
   },
   {
-    src: "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=80",
-    alt: "Snowy mountain peaks under a starry sky",
-    photographer: "Benjamin Voros",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?auto=format&fit=crop&w=1200&q=80",
-    alt: "Fog covering mountain ridges at dawn",
-    photographer: "Luke Stackpoole",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1433086966358-54859d0ed716?auto=format&fit=crop&w=1200&q=80",
-    alt: "Waterfall cascading into a rocky gorge",
-    photographer: "Blake Richard Verdoorn",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1472214103451-9374bd1c798e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Green hillside under a dramatic sky",
-    photographer: "Robert Lukeman",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1493246507139-91e8fad9978e?auto=format&fit=crop&w=1200&q=80",
-    alt: "Mountain range at dusk with purple light",
-    photographer: "Mars Vilaubi",
-  },
-  {
-    src: "https://images.unsplash.com/photo-1514565131-fce0801e5785?auto=format&fit=crop&w=1200&q=80",
+    src: "/images/photo-city.jpg",
     alt: "City skyline glowing at night",
     photographer: "Pedro Lastra",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/photo-lake.jpg",
+    alt: "Alpine lake with a canoe at golden hour",
+    photographer: "Robert Lukeman",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/photo-forest.jpg",
+    alt: "Sunlight through a dense green forest",
+    photographer: "David Marcu",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/photo-desert.jpg",
+    alt: "Desert sand dunes under a clear sky",
+    photographer: "Luke Stackpoole",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/photo-building.jpg",
+    alt: "Modern building facade with geometric windows",
+    photographer: "Mars Vilaubi",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/photo-flower.jpg",
+    alt: "Close-up of a colorful flower",
+    photographer: "Susan Wilkinson",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/photo-waterfall.jpg",
+    alt: "Waterfall cascading into a rocky gorge",
+    photographer: "Blake Richard Verdoorn",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/photo-camera.jpg",
+    alt: "Photographer holding a camera at golden hour",
+    photographer: "Duangphorn Wiriya",
+    width: 900,
+    height: 1200,
   },
 ];
 
@@ -124,73 +180,49 @@ const topics = [
     name: "Nature",
     description: "Landscapes and wild places",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1426604966848-d7adac402bff?auto=format&fit=crop&w=1000&q=80",
-      alt: "Mountain lake reflecting pine trees",
-    },
+    image: { src: "/images/cover-nature.jpg", alt: "Nature topic cover" },
   },
   {
     name: "Wallpapers",
     description: "Desktop and mobile backgrounds",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?auto=format&fit=crop&w=1000&q=80",
-      alt: "Canoe on a calm alpine lake",
-    },
+    image: { src: "/images/cover-wallpapers.jpg", alt: "Wallpapers topic cover" },
   },
   {
     name: "Travel",
     description: "Places worth wandering",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1488646953014-85cb44e25828?auto=format&fit=crop&w=1000&q=80",
-      alt: "Open suitcase packed for travel",
-    },
+    image: { src: "/images/cover-travel.jpg", alt: "Travel topic cover" },
   },
   {
     name: "Architecture",
     description: "Forms, spaces, and structure",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1487958449943-2429e8be8625?auto=format&fit=crop&w=1000&q=80",
-      alt: "Modern building facade with geometric windows",
-    },
+    image: { src: "/images/cover-architecture.jpg", alt: "Architecture topic cover" },
   },
   {
     name: "People",
     description: "Portraits and everyday life",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=1000&q=80",
-      alt: "Friends laughing together outdoors",
-    },
+    image: { src: "/images/cover-people.jpg", alt: "People topic cover" },
   },
   {
     name: "Film",
     description: "Analog textures and tones",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?auto=format&fit=crop&w=1000&q=80",
-      alt: "Photographer holding a camera at golden hour",
-    },
+    image: { src: "/images/cover-film.jpg", alt: "Film topic cover" },
   },
   {
     name: "Street Photography",
     description: "Life in motion",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=1000&q=80",
-      alt: "City street with traffic and buildings",
-    },
+    image: { src: "/images/cover-street.jpg", alt: "Street photography topic cover" },
   },
   {
     name: "3D Renders",
     description: "Digital worlds and objects",
     href: "#explore",
-    image: {
-      src: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1000&q=80",
-      alt: "Abstract colorful 3D shapes",
-    },
+    image: { src: "/images/cover-3d.jpg", alt: "3D renders topic cover" },
   },
 ];
 
@@ -199,14 +231,14 @@ const community = {
   title: "Contribute your first photo",
   description:
     "Join a community of creators sharing free, high-resolution images used by millions of people every day.",
-  ctaLabel: "Submit a photo",
+  ctaLabel: "Submit an image",
   ctaHref: "#subscribe",
   leftImage: {
-    src: "https://images.unsplash.com/photo-1452587925148-ce544e77e70d?auto=format&fit=crop&w=1000&q=80",
+    src: "/images/photo-lens.jpg",
     alt: "Camera lens close-up",
   },
   rightImage: {
-    src: "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=1000&q=80",
+    src: "/images/photo-vintage-camera.jpg",
     alt: "Vintage camera on a wooden table",
   },
   highlights: [
@@ -214,85 +246,75 @@ const community = {
       name: "Annie Spratt",
       role: "Top contributor · Nature & textures",
       href: "#explore",
-      avatar: {
-        src: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=80",
-        alt: "Portrait of Annie Spratt",
-      },
+      avatar: { src: "/images/portrait-annie.jpg", alt: "Portrait of Annie Spratt" },
     },
     {
       name: "Jasper Boer",
       role: "Featured photographer · Travel",
       href: "#explore",
-      avatar: {
-        src: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=80",
-        alt: "Portrait of Jasper Boer",
-      },
+      avatar: { src: "/images/portrait-jasper.jpg", alt: "Portrait of Jasper Boer" },
     },
     {
       name: "Surface",
       role: "Studio collective · Product & people",
       href: "#explore",
-      avatar: {
-        src: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=80",
-        alt: "Portrait of a Surface contributor",
-      },
+      avatar: { src: "/images/portrait-surface.jpg", alt: "Portrait of a Surface contributor" },
     },
   ],
 };
 
 export default function Home() {
   return (
-    <>
-      <Navbar
-        brand="Unsplash"
-        links={navLinks}
-        topics={topicLinks}
-        searchPlaceholder="Search photos and illustrations"
-        loginLabel="Log in"
-        joinLabel="Join free"
-        submitLabel="Submit a photo"
-      />
+    <div className="flex min-h-full">
+      <Sidebar brandHref="#hero" links={sidebarLinks} />
 
-      <main>
-        <Hero {...hero} />
-
-        <ExploreSection
-          id="explore"
-          title="Explore"
-          description="Browse a curated mix of free photos from creators around the world."
-          photos={explorePhotos}
+      <div className="flex min-w-0 flex-1 flex-col">
+        <Navbar
+          brand="Unsplash"
+          links={navLinks}
+          topics={topicLinks}
+          searchPlaceholder="Search photos and illustrations"
+          plusLabel="Get Unsplash+"
+          loginLabel="Log in"
+          submitLabel="Submit an image"
         />
 
-        <TopicsSection
-          id="topics"
-          title="Topics"
-          description="Explore curated collections organized by theme, mood, and creative use."
-          topics={topics}
+        <main>
+          <Hero {...hero} />
+
+          <ExploreSection id="explore" title="Explore" photos={explorePhotos} />
+
+          <TopicsSection
+            id="topics"
+            title="Topics"
+            description="Explore curated collections organized by theme, mood, and creative use."
+            topics={topics}
+          />
+
+          <CommunitySection {...community} />
+
+          <SubscribeSection
+            id="subscribe"
+            title="Stay in the loop"
+            description="Get the latest photos, stories, and product updates from creators around the world."
+            placeholder="Enter your email"
+            buttonLabel="Subscribe"
+            successMessage="Thanks for subscribing!"
+          />
+        </main>
+
+        <Footer
+          brand="Unsplash"
+          tagline="Make something awesome with free high-resolution photos from creators around the world."
+          columns={footerColumns}
+          socialLinks={[
+            { label: "Twitter", href: "#community" },
+            { label: "Facebook", href: "#community" },
+            { label: "Instagram", href: "#community" },
+          ]}
+          copyright="Make something awesome."
         />
-
-        <CommunitySection {...community} />
-
-        <SubscribeSection
-          id="subscribe"
-          title="Stay in the loop"
-          description="Get the latest photos, stories, and product updates from creators around the world."
-          placeholder="Enter your email"
-          buttonLabel="Subscribe"
-          successMessage="Thanks for subscribing!"
-        />
-      </main>
-
-      <Footer
-        brand="Unsplash"
-        tagline="Make something awesome with free high-resolution photos from creators around the world."
-        columns={footerColumns}
-        socialLinks={[
-          { label: "Twitter", href: "#community" },
-          { label: "Facebook", href: "#community" },
-          { label: "Instagram", href: "#community" },
-        ]}
-        copyright="Make something awesome."
-      />
-    </>
+      </div>
+    </div>
   );
 }

@@ -4,54 +4,54 @@ export interface ExplorePhoto {
   src: string;
   alt: string;
   photographer: string;
+  width: number;
+  height: number;
   href?: string;
 }
 
 export interface ExploreSectionProps {
   id: string;
   title: string;
-  description: string;
   photos: ExplorePhoto[];
+}
+
+function columnFor(photos: ExplorePhoto[], columns: number, index: number) {
+  return photos.filter((_, photoIndex) => photoIndex % columns === index);
 }
 
 export default function ExploreSection({
   id,
   title,
-  description,
   photos,
 }: ExploreSectionProps) {
   return (
-    <section
-      id={id}
-      className="scroll-mt-28 border-b border-black/6 px-4 py-16 sm:px-6 sm:py-20"
-    >
-      <div className="mx-auto max-w-[1440px]">
-        <div className="mb-8 max-w-2xl sm:mb-10">
-          <h2 className="text-2xl font-semibold tracking-tight text-neutral-900 sm:text-3xl">
-            {title}
-          </h2>
-          <p className="mt-3 text-base leading-7 text-neutral-600 sm:text-lg">
-            {description}
-          </p>
-        </div>
+    <section id={id} className="scroll-mt-24 px-6 pb-12 lg:px-8">
+      <h2 className="sr-only">{title}</h2>
 
-        <div className="columns-1 gap-4 sm:columns-2 lg:columns-3">
-          {photos.map((photo, index) => {
-            const tall = index % 5 === 1 || index % 5 === 3;
-            return (
-              <PhotoTile
-                key={`${photo.src}-${photo.photographer}`}
-                src={photo.src}
-                alt={photo.alt}
-                photographer={photo.photographer}
-                href={photo.href}
-                className={`mb-4 break-inside-avoid ${
-                  tall ? "aspect-[3/4]" : "aspect-[4/3]"
-                }`}
-              />
-            );
-          })}
-        </div>
+      <div className="flex flex-col gap-6 sm:hidden">
+        {photos.map((photo) => (
+          <PhotoTile key={`${photo.src}-${photo.photographer}`} {...photo} />
+        ))}
+      </div>
+
+      <div className="hidden gap-6 sm:flex lg:hidden">
+        {[0, 1].map((column) => (
+          <div key={column} className="flex min-w-0 flex-1 flex-col gap-6">
+            {columnFor(photos, 2, column).map((photo) => (
+              <PhotoTile key={`${photo.src}-${photo.photographer}`} {...photo} />
+            ))}
+          </div>
+        ))}
+      </div>
+
+      <div className="hidden gap-6 lg:flex">
+        {[0, 1, 2].map((column) => (
+          <div key={column} className="flex min-w-0 flex-1 flex-col gap-6">
+            {columnFor(photos, 3, column).map((photo) => (
+              <PhotoTile key={`${photo.src}-${photo.photographer}`} {...photo} />
+            ))}
+          </div>
+        ))}
       </div>
     </section>
   );

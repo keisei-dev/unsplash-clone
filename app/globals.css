@@ -4,18 +4,29 @@
   --background: #ffffff;
   --foreground: #111111;
   --muted: #767676;
-  --border: rgba(0, 0, 0, 0.08);
+  --border: #d1d1d1;
+  --search: #eeeeee;
+  --search-hover: #e1e1e1;
+  --surface: #f5f5f5;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --font-sans: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 a,
@@ -23,33 +34,7 @@ button {
   cursor: pointer;
 }
 
-@keyframes hero-fade-up {
-  from {
-    opacity: 0;
-    transform: translateY(14px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.hero-enter {
-  animation: hero-fade-up 700ms ease-out both;
-}
-
-.hero-enter-delay {
-  animation-delay: 120ms;
-}
-
-.hero-enter-delay-2 {
-  animation-delay: 220ms;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .hero-enter,
-  .hero-enter-delay,
-  .hero-enter-delay-2 {
-    animation: none;
-  }
+input,
+button {
+  font-family: inherit;
 }

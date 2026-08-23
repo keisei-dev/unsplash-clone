@@ -62,16 +62,16 @@ export default function SubscribeSection({
   return (
     <section
       id={id}
-      className="scroll-mt-28 border-b border-black/6 bg-neutral-900 px-4 py-16 text-white sm:px-6 sm:py-24"
+      className="scroll-mt-24 bg-[#111] px-4 py-16 text-white sm:px-6 sm:py-20"
     >
-      <div className="mx-auto max-w-2xl text-center">
-        <div className="mx-auto mb-5 flex h-12 w-12 items-center justify-center rounded-full bg-white/10">
-          <Mail size={22} aria-hidden />
+      <div className="mx-auto max-w-xl text-center">
+        <div className="mx-auto mb-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10">
+          <Mail size={18} aria-hidden />
         </div>
-        <h2 className="text-2xl font-semibold tracking-tight sm:text-3xl md:text-4xl">
+        <h2 className="text-[28px] leading-tight font-bold">
           {title}
         </h2>
-        <p className="mt-4 text-base leading-7 text-neutral-300 sm:text-lg">
+        <p className="mt-3 text-[15px] leading-[1.6] text-[#d1d1d1]">
           {description}
         </p>
 
@@ -99,12 +99,12 @@ export default function SubscribeSection({
             }}
             placeholder={placeholder}
             disabled={status === "loading"}
-            className="h-12 flex-1 rounded-md border border-white/15 bg-white/95 px-4 text-sm text-neutral-900 outline-none transition-shadow placeholder:text-neutral-500 focus-visible:ring-2 focus-visible:ring-white disabled:opacity-70 sm:h-14 sm:text-base"
+            className="h-10 flex-1 rounded-[4px] bg-white px-3 text-[15px] text-[#111] outline-none placeholder:text-[#767676] disabled:opacity-70"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="inline-flex h-12 items-center justify-center gap-2 rounded-md bg-white px-6 text-sm font-semibold text-neutral-900 transition-colors hover:bg-neutral-200 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white disabled:cursor-not-allowed disabled:opacity-70 sm:h-14 sm:min-w-40 sm:text-base"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-[4px] bg-white px-4 text-[14px] text-[#111] transition-opacity hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {status === "loading" ? (
               <>
@@ -118,7 +118,7 @@ export default function SubscribeSection({
         </form>
 
         <div
-          className="mt-4 min-h-6 text-sm"
+          className="mt-3 min-h-6 text-[13px]"
           role="status"
           aria-live="polite"
         >

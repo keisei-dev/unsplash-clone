@@ -1,112 +1,128 @@
 "use client";
 
-import { Search, TrendingUp } from "lucide-react";
+import { ScanSearch, Search } from "lucide-react";
 import Image from "next/image";
+
+export interface HeroPromoImage {
+  src: string;
+  alt: string;
+  className: string;
+}
 
 export interface HeroProps {
   id: string;
+  brand: string;
   headline: string;
-  subheadline: string;
+  headlineLine2: string;
   searchPlaceholder: string;
-  trendingLabel: string;
-  trendingHref: string;
-  sponsorLabel: string;
-  image: {
-    src: string;
-    alt: string;
-  };
-  photographer: {
-    name: string;
-    href: string;
-  };
+  promoTitle: string;
+  promoSubtitle: string;
+  promoCta: string;
+  promoHref: string;
+  promoImages: HeroPromoImage[];
 }
 
 export default function Hero({
   id,
+  brand,
   headline,
-  subheadline,
+  headlineLine2,
   searchPlaceholder,
-  trendingLabel,
-  trendingHref,
-  sponsorLabel,
-  image,
-  photographer,
+  promoTitle,
+  promoSubtitle,
+  promoCta,
+  promoHref,
+  promoImages,
 }: HeroProps) {
   return (
-    <section
-      id={id}
-      className="relative flex min-h-[min(88vh,920px)] scroll-mt-28 items-center justify-center overflow-hidden"
-    >
-      <Image
-        src={image.src}
-        alt={image.alt}
-        fill
-        priority
-        sizes="100vw"
-        className="object-cover object-center"
-      />
-      <div
-        className="absolute inset-0 bg-linear-to-b from-black/45 via-black/40 to-black/55"
-        aria-hidden
-      />
-
-      <div className="relative z-10 mx-auto w-full max-w-3xl px-4 py-24 text-center sm:px-6 sm:py-28">
-        <div className="hero-enter">
-          <h1 className="text-4xl font-bold tracking-tight text-balance text-white sm:text-5xl md:text-6xl">
-            {headline}
+    <section id={id} className="scroll-mt-24 px-6 pt-16 pb-16 lg:px-8 lg:pt-20">
+      <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-end">
+        <div className="min-w-0 flex-1">
+          <h1 className="text-[40px] leading-none font-bold tracking-[-0.03em] text-black">
+            {brand}
           </h1>
-          <p className="mt-4 text-base text-white/90 sm:text-lg md:text-xl">
-            {subheadline}
+          <p className="mt-3 text-[18px] leading-[1.5] text-black">
+            {headline}
+            <br />
+            {headlineLine2}
           </p>
-          <p className="mt-2 text-sm text-white/70">{sponsorLabel}</p>
-        </div>
 
-        <form
-          className="hero-enter hero-enter-delay mt-8 sm:mt-10"
-          onSubmit={(event) => event.preventDefault()}
-          role="search"
-        >
-          <label htmlFor="hero-search" className="sr-only">
-            {searchPlaceholder}
-          </label>
-          <div className="relative">
+          <form
+            className="relative mt-8"
+            onSubmit={(event) => event.preventDefault()}
+            role="search"
+          >
             <Search
               size={18}
-              className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-neutral-500 sm:left-5"
+              className="pointer-events-none absolute top-1/2 left-4 -translate-y-1/2 text-[#767676]"
               aria-hidden
             />
+            <label htmlFor="hero-search" className="sr-only">
+              {searchPlaceholder}
+            </label>
             <input
               id="hero-search"
               type="search"
               placeholder={searchPlaceholder}
-              className="h-12 w-full rounded-md bg-white pr-4 pl-11 text-sm text-neutral-900 shadow-lg outline-none transition-[box-shadow,transform] placeholder:text-neutral-500 hover:shadow-xl focus:shadow-xl focus-visible:ring-2 focus-visible:ring-white/80 sm:h-14 sm:rounded-lg sm:pl-12 sm:text-base"
+              className="h-[54px] w-full rounded-full bg-[#eee] pr-12 pl-12 text-[15px] text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
             />
-          </div>
-        </form>
+            <span className="absolute top-1/2 right-4 -translate-y-1/2 text-[#767676]">
+              <ScanSearch size={18} aria-hidden />
+            </span>
+          </form>
+        </div>
 
         <a
-          href={trendingHref}
-          className="hero-enter hero-enter-delay-2 mt-5 inline-flex items-center gap-2 text-sm font-medium text-white/85 transition-colors hover:text-white focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white"
+          href={promoHref}
+          className="group relative grid h-[292px] w-full shrink-0 overflow-hidden rounded-2xl border border-[#eee] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:w-[48%]"
         >
-          <TrendingUp size={16} aria-hidden />
-          {trendingLabel}
+          <UnsplashPlusMark />
+          <div className="flex h-full flex-col items-start px-5 pt-12 pb-8">
+            <p className="text-[20px] leading-[1.25] font-bold text-black">
+              {promoTitle}
+            </p>
+              <p className="mt-1.5 text-[15px] leading-normal whitespace-pre-line text-[#767676]">
+                {promoSubtitle}
+              </p>
+            <span className="mt-6 inline-flex h-9 w-fit items-center rounded-full bg-black px-4 text-[14px] text-white">
+              {promoCta}
+            </span>
+          </div>
+          <div className="relative hidden sm:block">
+            {promoImages.map((image) => (
+              <div
+                key={`${image.src}-${image.className}`}
+                className={`absolute overflow-hidden rounded-lg shadow-[0_16px_36px_rgba(0,0,0,0.18)] ${image.className}`}
+              >
+                <Image
+                  src={image.src}
+                  alt={image.alt}
+                  fill
+                  unoptimized
+                  sizes="220px"
+                  className="object-cover"
+                />
+              </div>
+            ))}
+          </div>
         </a>
       </div>
-
-      <div className="absolute inset-x-0 bottom-0 z-10 px-4 py-4 sm:px-6">
-        <div className="mx-auto flex max-w-[1440px] items-end justify-between gap-4">
-          <p className="text-xs text-white/75 sm:text-sm">
-            Photo by{" "}
-            <a
-              href={photographer.href}
-              className="underline decoration-white/40 underline-offset-2 transition-colors hover:text-white hover:decoration-white"
-            >
-              {photographer.name}
-            </a>{" "}
-            on Unsplash
-          </p>
-        </div>
-      </div>
     </section>
+  );
+}
+
+function UnsplashPlusMark() {
+  return (
+    <span className="absolute top-5 left-5 z-10" aria-hidden>
+      <svg width="18" height="18" viewBox="0 0 24 24">
+        <path
+          fill="none"
+          stroke="#ffffff"
+          strokeWidth="2"
+          strokeLinecap="square"
+          d="M12 5v14M5 12h14"
+        />
+      </svg>
+    </span>
   );
 }

@@ -1,6 +1,6 @@
 "use client";
 
-import { Menu, Search, X } from "lucide-react";
+import { Menu, ScanSearch, Search, X } from "lucide-react";
 import { useState } from "react";
 
 export interface NavLink {
@@ -13,8 +13,8 @@ export interface NavbarProps {
   links: NavLink[];
   topics: NavLink[];
   searchPlaceholder: string;
+  plusLabel: string;
   loginLabel: string;
-  joinLabel: string;
   submitLabel: string;
 }
 
@@ -23,29 +23,29 @@ export default function Navbar({
   links,
   topics,
   searchPlaceholder,
+  plusLabel,
   loginLabel,
-  joinLabel,
   submitLabel,
 }: NavbarProps) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-black/8 bg-white/95 backdrop-blur-sm">
-      <div className="mx-auto flex h-16 max-w-[1440px] items-center gap-3 px-4 sm:gap-4 sm:px-6">
+    <header className="sticky top-0 z-40 bg-white">
+      <div className="flex h-14 items-center gap-3 px-4 lg:h-16 lg:px-6">
         <button
           type="button"
-          className="inline-flex h-10 w-10 items-center justify-center rounded-md text-neutral-800 transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 lg:hidden"
+          className="inline-flex h-8 w-8 items-center justify-center text-[#111] transition-colors hover:opacity-70 lg:hidden"
           aria-expanded={mobileOpen}
           aria-controls="mobile-nav"
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           onClick={() => setMobileOpen((open) => !open)}
         >
-          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          {mobileOpen ? <X size={20} /> : <Menu size={20} />}
         </button>
 
         <a
           href="#hero"
-          className="shrink-0 text-lg font-bold tracking-tight text-neutral-900 transition-opacity hover:opacity-70"
+          className="shrink-0 text-[15px] font-bold text-[#111] lg:hidden"
         >
           {brand}
         </a>
@@ -57,66 +57,51 @@ export default function Navbar({
         >
           <Search
             size={16}
-            className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-neutral-500"
+            className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-[#767676]"
             aria-hidden
           />
           <input
             type="search"
             placeholder={searchPlaceholder}
-            className="h-10 w-full rounded-full bg-neutral-100 pr-4 pl-10 text-sm text-neutral-900 outline-none transition-colors placeholder:text-neutral-500 hover:bg-neutral-200/80 focus:bg-neutral-200/80 focus-visible:ring-2 focus-visible:ring-neutral-900/20"
+            className="h-10 w-full rounded-full bg-[#eee] pr-10 pl-10 text-[14px] text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
           />
+          <span className="absolute top-1/2 right-3 -translate-y-1/2 text-[#767676]">
+            <ScanSearch size={16} aria-hidden />
+          </span>
         </form>
 
-        <nav
-          className="ml-auto hidden items-center gap-1 lg:flex"
-          aria-label="Primary"
-        >
-          {links.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-900 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-
-        <div className="ml-auto flex items-center gap-2 lg:ml-0">
+        <div className="ml-auto flex items-center gap-0.5 md:ml-2">
           <a
             href="#subscribe"
-            className="hidden rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100 hover:text-neutral-900 sm:inline-flex"
+            className="hidden px-2.5 py-2 text-[14px] text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
+          >
+            {plusLabel}
+          </a>
+          <a
+            href="#subscribe"
+            className="hidden px-2.5 py-2 text-[14px] text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
           >
             {loginLabel}
           </a>
           <a
-            href="#subscribe"
-            className="inline-flex h-9 items-center rounded-md bg-neutral-900 px-3.5 text-sm font-medium text-white transition-colors hover:bg-neutral-700 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900"
-          >
-            {joinLabel}
-          </a>
-          <a
-            href="#explore"
-            className="hidden h-9 items-center rounded-md border border-neutral-300 px-3.5 text-sm font-medium text-neutral-800 transition-colors hover:border-neutral-400 hover:bg-neutral-50 sm:inline-flex"
+            href="#community"
+            className="ml-1 inline-flex h-8 items-center rounded-[4px] border border-[#d1d1d1] bg-white px-3 text-[14px] text-[#111] transition-colors hover:border-[#111]"
           >
             {submitLabel}
           </a>
         </div>
       </div>
 
-      <nav
-        className="hidden border-t border-black/6 lg:block"
-        aria-label="Topics"
-      >
-        <div className="mx-auto flex max-w-[1440px] gap-1 overflow-x-auto px-4 py-2 sm:px-6">
+      <nav className="hidden border-b border-[#eee] lg:block" aria-label="Topics">
+        <div className="flex gap-6 overflow-x-auto px-6">
           {topics.map((topic, index) => (
             <a
-              key={topic.href}
+              key={topic.label}
               href={topic.href}
-              className={`shrink-0 rounded-md px-3 py-1.5 text-sm transition-colors hover:bg-neutral-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-neutral-900 ${
+              className={`shrink-0 border-b-2 py-3 text-[14px] transition-colors ${
                 index === 0
-                  ? "font-semibold text-neutral-900"
-                  : "font-medium text-neutral-600 hover:text-neutral-900"
+                  ? "border-[#111] font-bold text-[#111]"
+                  : "border-transparent text-[#767676] hover:text-[#111]"
               }`}
             >
               {topic.label}
@@ -126,10 +111,7 @@ export default function Navbar({
       </nav>
 
       {mobileOpen ? (
-        <div
-          id="mobile-nav"
-          className="border-t border-black/8 bg-white px-4 py-4 lg:hidden"
-        >
+        <div id="mobile-nav" className="border-b border-[#eee] bg-white px-4 py-4 lg:hidden">
           <form
             className="relative mb-4 md:hidden"
             onSubmit={(event) => event.preventDefault()}
@@ -137,54 +119,31 @@ export default function Navbar({
           >
             <Search
               size={16}
-              className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-neutral-500"
+              className="pointer-events-none absolute top-1/2 left-3.5 -translate-y-1/2 text-[#767676]"
               aria-hidden
             />
             <input
               type="search"
               placeholder={searchPlaceholder}
-              className="h-10 w-full rounded-full bg-neutral-100 pr-4 pl-10 text-sm text-neutral-900 outline-none placeholder:text-neutral-500 focus-visible:ring-2 focus-visible:ring-neutral-900/20"
+              className="h-10 w-full rounded-full bg-[#eee] pr-4 pl-10 text-[14px] text-[#111] outline-none placeholder:text-[#767676]"
             />
           </form>
-
-          <nav className="flex flex-col gap-1" aria-label="Mobile primary">
-            {links.map((link) => (
+          <nav className="flex flex-col" aria-label="Mobile primary">
+            {[
+              ...links,
+              { label: plusLabel, href: "#subscribe" },
+              { label: loginLabel, href: "#subscribe" },
+            ].map((link) => (
               <a
-                key={link.href}
+                key={link.label}
                 href={link.href}
-                className="rounded-md px-3 py-2.5 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-100"
+                className="py-2.5 text-[15px] text-[#111]"
                 onClick={() => setMobileOpen(false)}
               >
                 {link.label}
               </a>
             ))}
           </nav>
-
-          <div className="mt-3 border-t border-black/8 pt-3">
-            <p className="mb-2 px-3 text-xs font-semibold tracking-wide text-neutral-500 uppercase">
-              Topics
-            </p>
-            <nav className="flex flex-col gap-1" aria-label="Mobile topics">
-              {topics.map((topic) => (
-                <a
-                  key={topic.href}
-                  href={topic.href}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-neutral-700 transition-colors hover:bg-neutral-100"
-                  onClick={() => setMobileOpen(false)}
-                >
-                  {topic.label}
-                </a>
-              ))}
-            </nav>
-          </div>
-
-          <a
-            href="#explore"
-            className="mt-4 flex h-10 items-center justify-center rounded-md border border-neutral-300 text-sm font-medium text-neutral-800 transition-colors hover:bg-neutral-50 sm:hidden"
-            onClick={() => setMobileOpen(false)}
-          >
-            {submitLabel}
-          </a>
         </div>
       ) : null}
     </header>
