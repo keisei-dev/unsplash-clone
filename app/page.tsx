@@ -3,7 +3,7 @@ import ExploreSection from "@/components/ExploreSection";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
-import SectionShell from "@/components/SectionShell";
+import SubscribeSection from "@/components/SubscribeSection";
 import TopicsSection from "@/components/TopicsSection";
 
 const navLinks = [
@@ -272,10 +272,13 @@ export default function Home() {
 
         <CommunitySection {...community} />
 
-        <SectionShell
+        <SubscribeSection
           id="subscribe"
           title="Stay in the loop"
-          description="Email subscription with Web3Forms and a database comes later — this section is the scroll target for now."
+          description="Get the latest photos, stories, and product updates from creators around the world."
+          placeholder="Enter your email"
+          buttonLabel="Subscribe"
+          successMessage="Thanks for subscribing!"
         />
       </main>
 
