@@ -1,4 +1,5 @@
 import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
 import Navbar from "@/components/Navbar";
 import SectionShell from "@/components/SectionShell";
 
@@ -49,14 +50,25 @@ const footerColumns = [
   },
 ];
 
-const sections = [
-  {
-    id: "hero",
-    title: "The internet’s source for visuals.",
-    description:
-      "Hero section placeholder — full Unsplash-style search and imagery lands in the next commit.",
-    className: "min-h-[70vh] bg-neutral-900 text-white [&_h2]:text-white [&_p]:text-neutral-300",
+const hero = {
+  id: "hero",
+  headline: "The internet’s source for visuals.",
+  subheadline: "Powered by creators everywhere.",
+  searchPlaceholder: "Search photos and illustrations",
+  trendingLabel: "See trending searches",
+  trendingHref: "#explore",
+  sponsorLabel: "Supported by Squarespace",
+  image: {
+    src: "https://images.unsplash.com/photo-1501785888041-af3ee285d569?auto=format&fit=crop&w=2400&q=80",
+    alt: "Misty mountain lake surrounded by evergreen forest",
   },
+  photographer: {
+    name: "Pietro De Grandi",
+    href: "#community",
+  },
+};
+
+const sections = [
   {
     id: "explore",
     title: "Explore",
@@ -97,13 +109,14 @@ export default function Home() {
       />
 
       <main>
+        <Hero {...hero} />
+
         {sections.map((section) => (
           <SectionShell
             key={section.id}
             id={section.id}
             title={section.title}
             description={section.description}
-            className={section.className}
           />
         ))}
       </main>
