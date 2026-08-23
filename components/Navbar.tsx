@@ -11,7 +11,7 @@ export interface NavLink {
 export interface NavbarProps {
   brand: string;
   links: NavLink[];
-  topics: NavLink[];
+  topics: { label: string }[];
   searchPlaceholder: string;
   plusLabel: string;
   loginLabel: string;
@@ -92,12 +92,12 @@ export default function Navbar({
         </div>
       </div>
 
-      <nav className="hidden border-b border-[#eee] lg:block" aria-label="Topics">
-        <div className="flex gap-6 overflow-x-auto px-6">
+      <nav className="border-b border-[#eee]" aria-label="Photo categories">
+        <div className="flex gap-6 overflow-x-auto px-4 lg:px-6">
           {topics.map((topic, index) => (
-            <a
+            <button
               key={topic.label}
-              href={topic.href}
+              type="button"
               className={`shrink-0 border-b-2 py-3 text-[14px] transition-colors ${
                 index === 0
                   ? "border-[#111] font-bold text-[#111]"
@@ -105,7 +105,7 @@ export default function Navbar({
               }`}
             >
               {topic.label}
-            </a>
+            </button>
           ))}
         </div>
       </nav>

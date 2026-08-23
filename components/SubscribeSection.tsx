@@ -33,6 +33,43 @@ export default function SubscribeSection({
     setMessage("");
 
     try {
+      const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+      if (!accessKey) {
+        setStatus("error");
+        setMessage("Web3Forms is not configured. Add NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.");
+        return;
+      }
+
+      const web3formsResponse = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: accessKey,
+          subject: "New Unsplash landing page subscription",
+          from_name: "Unsplash Replica",
+          name: "Subscriber",
+          email,
+          message: `${email} subscribed to updates.`,
+        }),
+      });
+
+      const web3formsResult = (await web3formsResponse.json()) as {
+        success?: boolean;
+        message?: string;
+      };
+
+      if (!web3formsResponse.ok || !web3formsResult.success) {
+        setStatus("error");
+        setMessage(
+          web3formsResult.message ?? "Email notification failed. Please try again.",
+        );
+        return;
+      }
+
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },

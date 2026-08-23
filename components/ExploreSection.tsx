@@ -6,7 +6,6 @@ export interface ExplorePhoto {
   photographer: string;
   width: number;
   height: number;
-  href?: string;
 }
 
 export interface ExploreSectionProps {
@@ -25,7 +24,7 @@ export default function ExploreSection({
   photos,
 }: ExploreSectionProps) {
   return (
-    <section id={id} className="scroll-mt-24 px-6 pb-12 lg:px-8">
+    <section id={id} className="scroll-mt-36 px-6 pb-12 lg:px-8">
       <h2 className="sr-only">{title}</h2>
 
       <div className="flex flex-col gap-6 sm:hidden">

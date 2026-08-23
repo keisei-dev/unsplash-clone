@@ -14,18 +14,18 @@ const navLinks = [
 ];
 
 const topicLinks = [
-  { label: "Featured", href: "#hero" },
-  { label: "Summer", href: "#explore" },
-  { label: "Wallpapers", href: "#topics" },
-  { label: "3D Renders", href: "#topics" },
-  { label: "Nature", href: "#topics" },
-  { label: "Textures", href: "#topics" },
-  { label: "Film", href: "#topics" },
-  { label: "Architecture", href: "#topics" },
-  { label: "Street Photography", href: "#topics" },
-  { label: "Experimental", href: "#explore" },
-  { label: "Travel", href: "#topics" },
-  { label: "People", href: "#topics" },
+  { label: "Featured" },
+  { label: "Summer" },
+  { label: "Wallpapers" },
+  { label: "3D Renders" },
+  { label: "Nature" },
+  { label: "Textures" },
+  { label: "Film" },
+  { label: "Architecture" },
+  { label: "Street Photography" },
+  { label: "Experimental" },
+  { label: "Travel" },
+  { label: "People" },
 ];
 
 const sidebarLinks = [
@@ -173,55 +173,82 @@ const explorePhotos = [
     width: 900,
     height: 1200,
   },
+  {
+    src: "/images/photo-beach.jpg",
+    alt: "Sunlit shoreline and ocean waves",
+    photographer: "Sean Oulashin",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/cover-3d.jpg",
+    alt: "Abstract three-dimensional render",
+    photographer: "Unsplash+",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/cover-people.jpg",
+    alt: "Portrait study in soft light",
+    photographer: "Surface",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/cover-street.jpg",
+    alt: "Street scene with motion and everyday life",
+    photographer: "Jasper Boer",
+    width: 1200,
+    height: 900,
+  },
+  {
+    src: "/images/cover-film.jpg",
+    alt: "Analog film tones and grain",
+    photographer: "Annie Spratt",
+    width: 1200,
+    height: 900,
+  },
 ];
 
 const topics = [
   {
     name: "Nature",
     description: "Landscapes and wild places",
-    href: "#explore",
     image: { src: "/images/cover-nature.jpg", alt: "Nature topic cover" },
   },
   {
     name: "Wallpapers",
     description: "Desktop and mobile backgrounds",
-    href: "#explore",
     image: { src: "/images/cover-wallpapers.jpg", alt: "Wallpapers topic cover" },
   },
   {
     name: "Travel",
     description: "Places worth wandering",
-    href: "#explore",
     image: { src: "/images/cover-travel.jpg", alt: "Travel topic cover" },
   },
   {
     name: "Architecture",
     description: "Forms, spaces, and structure",
-    href: "#explore",
     image: { src: "/images/cover-architecture.jpg", alt: "Architecture topic cover" },
   },
   {
     name: "People",
     description: "Portraits and everyday life",
-    href: "#explore",
     image: { src: "/images/cover-people.jpg", alt: "People topic cover" },
   },
   {
     name: "Film",
     description: "Analog textures and tones",
-    href: "#explore",
     image: { src: "/images/cover-film.jpg", alt: "Film topic cover" },
   },
   {
     name: "Street Photography",
     description: "Life in motion",
-    href: "#explore",
     image: { src: "/images/cover-street.jpg", alt: "Street photography topic cover" },
   },
   {
     name: "3D Renders",
     description: "Digital worlds and objects",
-    href: "#explore",
     image: { src: "/images/cover-3d.jpg", alt: "3D renders topic cover" },
   },
 ];

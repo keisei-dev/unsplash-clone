@@ -7,7 +7,6 @@ export interface PhotoTileProps {
   photographer: string;
   width: number;
   height: number;
-  href?: string;
 }
 
 export default function PhotoTile({
@@ -16,10 +15,12 @@ export default function PhotoTile({
   photographer,
   width,
   height,
-  href = "#explore",
 }: PhotoTileProps) {
   return (
-    <a href={href} className="group relative block bg-[#eee]">
+    <button
+      type="button"
+      className="group relative block w-full cursor-zoom-in border-0 bg-[#eee] p-0 text-left"
+    >
       <Image
         src={src}
         alt={alt}
@@ -52,6 +53,6 @@ export default function PhotoTile({
           Download
         </span>
       </div>
-    </a>
+    </button>
   );
 }

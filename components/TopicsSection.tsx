@@ -3,7 +3,6 @@ import Image from "next/image";
 export interface TopicItem {
   name: string;
   description: string;
-  href: string;
   image: {
     src: string;
     alt: string;
@@ -40,10 +39,10 @@ export default function TopicsSection({
 
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {topics.map((topic) => (
-            <a
+            <button
               key={topic.name}
-              href={topic.href}
-              className="group relative block aspect-4/3 overflow-hidden rounded-[8px] bg-[#eee]"
+              type="button"
+              className="group relative block aspect-4/3 w-full cursor-pointer overflow-hidden rounded-[8px] border-0 bg-[#eee] p-0 text-left"
             >
               <Image
                 key={topic.image.src}
@@ -62,7 +61,7 @@ export default function TopicsSection({
                 <h3 className="text-[18px] font-bold text-white">{topic.name}</h3>
                 <p className="mt-0.5 text-[13px] text-white/80">{topic.description}</p>
               </div>
-            </a>
+            </button>
           ))}
         </div>
       </div>
