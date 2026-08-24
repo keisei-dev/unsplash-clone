@@ -31,7 +31,7 @@ export default function Footer({
             <a href="#hero" className="text-[15px] font-bold text-[#111]">
               {brand}
             </a>
-            <p className="mt-3 max-w-xs text-[14px] leading-[1.6] text-[#767676]">
+            <p className="mt-3 max-w-xs text-sm leading-[1.6] text-[#767676]">
               {tagline}
             </p>
             <div className="mt-4 flex flex-wrap gap-4">
@@ -39,7 +39,7 @@ export default function Footer({
                 <a
                   key={link.label}
                   href={link.href}
-                  className="text-[14px] text-[#767676] transition-colors hover:text-[#111]"
+                  className="text-sm text-[#767676] transition-colors hover:text-[#111]"
                 >
                   {link.label}
                 </a>
@@ -49,7 +49,7 @@ export default function Footer({
 
           {columns.map((column) => (
             <div key={column.title}>
-              <h2 className="text-[14px] font-bold text-[#111]">
+              <h2 className="text-sm font-bold text-[#111]">
                 {column.title}
               </h2>
               <ul className="mt-3 space-y-2">
@@ -57,7 +57,7 @@ export default function Footer({
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-[14px] text-[#767676] transition-colors hover:text-[#111]"
+                      className="text-sm text-[#767676] transition-colors hover:text-[#111]"
                     >
                       {link.label}
                     </a>
@@ -68,7 +68,7 @@ export default function Footer({
           ))}
         </div>
 
-        <p className="mt-10 border-t border-[#eee] pt-5 text-[12px] leading-[1.6] text-[#767676]">
+        <p className="mt-10 border-t border-[#eee] pt-5 text-xs leading-[1.6] text-[#767676]">
           {copyright}
         </p>
       </div>

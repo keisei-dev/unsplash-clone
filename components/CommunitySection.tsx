@@ -46,7 +46,7 @@ export default function CommunitySection({
       <div className="mx-auto max-w-[1440px]">
         <div className="grid items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div className="relative grid grid-cols-2 gap-3 sm:gap-4">
-            <div className="relative aspect-3/4 overflow-hidden rounded-[8px] bg-[#eee]">
+            <div className="relative aspect-3/4 overflow-hidden rounded-lg bg-[#eee]">
               <Image
                 src={leftImage.src}
                 alt={leftImage.alt}
@@ -56,7 +56,7 @@ export default function CommunitySection({
                 className="object-cover"
               />
             </div>
-            <div className="relative mt-8 aspect-3/4 overflow-hidden rounded-[8px] bg-[#eee] sm:mt-12">
+            <div className="relative mt-8 aspect-3/4 overflow-hidden rounded-lg bg-[#eee] sm:mt-12">
               <Image
                 src={rightImage.src}
                 alt={rightImage.alt}
@@ -77,7 +77,7 @@ export default function CommunitySection({
             </p>
             <a
               href={ctaHref}
-              className="mt-6 inline-flex h-8 items-center gap-2 rounded-[4px] bg-[#111] px-3 text-[14px] text-white transition-opacity hover:opacity-85"
+              className="mt-6 inline-flex h-8 items-center gap-2 rounded-sm bg-[#111] px-3 text-sm text-white transition-opacity hover:opacity-85"
             >
               <Plus size={16} aria-hidden />
               {ctaLabel}
@@ -88,7 +88,7 @@ export default function CommunitySection({
                 <li key={person.name}>
                   <a
                     href={person.href}
-                    className="group flex items-center gap-3 rounded-[4px] transition-colors hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111]"
+                    className="group flex items-center gap-3 rounded-sm transition-colors hover:bg-[#f5f5f5] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#111]"
                   >
                     <span className="relative h-11 w-11 overflow-hidden rounded-full bg-neutral-200">
                       <Image
@@ -101,7 +101,7 @@ export default function CommunitySection({
                       />
                     </span>
                     <span>
-                      <span className="block text-[14px] font-medium text-[#111]">
+                      <span className="block text-sm font-medium text-[#111]">
                         {person.name}
                       </span>
                       <span className="block text-[13px] text-[#767676]">

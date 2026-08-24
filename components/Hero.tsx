@@ -41,7 +41,7 @@ export default function Hero({
           <h1 className="text-[40px] leading-none font-bold tracking-[-0.03em] text-black">
             {brand}
           </h1>
-          <p className="mt-3 text-[18px] leading-[1.5] text-black">
+          <p className="mt-3 text-lg leading-normal text-black">
             {headline}
             <br />
             {headlineLine2}
@@ -64,7 +64,7 @@ export default function Hero({
               id="hero-search"
               type="search"
               placeholder={searchPlaceholder}
-              className="h-[54px] w-full rounded-full bg-[#eee] pr-12 pl-12 text-[15px] text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
+              className="h-13.5 w-full rounded-full bg-[#eee] px-12 text-[15px] text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
             />
             <span className="absolute top-1/2 right-4 -translate-y-1/2 text-[#767676]">
               <ScanSearch size={18} aria-hidden />
@@ -74,17 +74,17 @@ export default function Hero({
 
         <a
           href={promoHref}
-          className="group relative grid h-[292px] w-full shrink-0 overflow-hidden rounded-2xl border border-[#eee] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:w-[48%]"
+          className="group relative grid h-73 w-full shrink-0 overflow-hidden rounded-2xl border border-[#eee] bg-white shadow-[0_8px_30px_rgba(0,0,0,0.06)] sm:grid-cols-[minmax(0,0.95fr)_minmax(0,1.25fr)] lg:w-[48%]"
         >
           <UnsplashPlusMark />
           <div className="flex h-full flex-col items-start px-5 pt-12 pb-8">
-            <p className="text-[20px] leading-[1.25] font-bold text-black">
+            <p className="text-xl leading-tight font-bold text-black">
               {promoTitle}
             </p>
               <p className="mt-1.5 text-[15px] leading-normal whitespace-pre-line text-[#767676]">
                 {promoSubtitle}
               </p>
-            <span className="mt-6 inline-flex h-9 w-fit items-center rounded-full bg-black px-4 text-[14px] text-white">
+            <span className="mt-6 inline-flex h-9 w-fit items-center rounded-full bg-black px-4 text-sm text-white">
               {promoCta}
             </span>
           </div>

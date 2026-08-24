@@ -136,12 +136,12 @@ export default function SubscribeSection({
             }}
             placeholder={placeholder}
             disabled={status === "loading"}
-            className="h-10 flex-1 rounded-[4px] bg-white px-3 text-[15px] text-[#111] outline-none placeholder:text-[#767676] disabled:opacity-70"
+            className="h-10 flex-1 rounded-sm bg-white px-3 text-[15px] text-[#111] outline-none placeholder:text-[#767676] disabled:opacity-70"
           />
           <button
             type="submit"
             disabled={status === "loading"}
-            className="inline-flex h-10 items-center justify-center gap-2 rounded-[4px] bg-white px-4 text-[14px] text-[#111] transition-opacity hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-70"
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-sm bg-white px-4 text-sm text-[#111] transition-opacity hover:opacity-85 disabled:cursor-not-allowed disabled:opacity-70"
           >
             {status === "loading" ? (
               <>

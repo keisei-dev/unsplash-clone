@@ -42,7 +42,7 @@ export default function TopicsSection({
             <button
               key={topic.name}
               type="button"
-              className="group relative block aspect-4/3 w-full cursor-pointer overflow-hidden rounded-[8px] border-0 bg-[#eee] p-0 text-left"
+              className="group relative block aspect-4/3 w-full cursor-pointer overflow-hidden rounded-lg border-0 bg-[#eee] p-0 text-left"
             >
               <Image
                 key={topic.image.src}
@@ -58,7 +58,7 @@ export default function TopicsSection({
                 aria-hidden
               />
               <div className="absolute inset-0 flex flex-col justify-end p-4 sm:p-5">
-                <h3 className="text-[18px] font-bold text-white">{topic.name}</h3>
+                <h3 className="text-lg font-bold text-white">{topic.name}</h3>
                 <p className="mt-0.5 text-[13px] text-white/80">{topic.description}</p>
               </div>
             </button>

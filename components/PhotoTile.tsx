@@ -35,11 +35,11 @@ export default function PhotoTile({
         aria-hidden
       />
       <div className="pointer-events-none absolute top-3 right-3 flex gap-2 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-[4px] bg-white text-[#111]">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-sm bg-white text-[#111]">
           <Plus size={16} strokeWidth={2} aria-hidden />
           <span className="sr-only">Add to collection</span>
         </span>
-        <span className="inline-flex h-8 w-8 items-center justify-center rounded-[4px] bg-white text-[#111]">
+        <span className="inline-flex h-8 w-8 items-center justify-center rounded-sm bg-white text-[#111]">
           <Bookmark size={16} strokeWidth={2} aria-hidden />
           <span className="sr-only">Like</span>
         </span>
@@ -48,7 +48,7 @@ export default function PhotoTile({
         <span className="truncate text-[15px] font-medium text-white">
           {photographer}
         </span>
-        <span className="inline-flex h-8 items-center gap-1.5 rounded-[4px] bg-white px-3 text-[14px] text-[#111]">
+        <span className="inline-flex h-8 items-center gap-1.5 rounded-sm bg-white px-3 text-sm text-[#111]">
           <Download size={15} aria-hidden />
           Download
         </span>

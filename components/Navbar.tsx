@@ -63,7 +63,7 @@ export default function Navbar({
           <input
             type="search"
             placeholder={searchPlaceholder}
-            className="h-10 w-full rounded-full bg-[#eee] pr-10 pl-10 text-[14px] text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
+            className="h-10 w-full rounded-full bg-[#eee] px-10 text-sm text-[#111] outline-none placeholder:text-[#767676] hover:bg-[#e1e1e1] focus:bg-white focus:ring-1 focus:ring-[#d1d1d1]"
           />
           <span className="absolute top-1/2 right-3 -translate-y-1/2 text-[#767676]">
             <ScanSearch size={16} aria-hidden />
@@ -73,19 +73,19 @@ export default function Navbar({
         <div className="ml-auto flex items-center gap-0.5 md:ml-2">
           <a
             href="#subscribe"
-            className="hidden px-2.5 py-2 text-[14px] text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
+            className="hidden px-2.5 py-2 text-sm text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
           >
             {plusLabel}
           </a>
           <a
             href="#subscribe"
-            className="hidden px-2.5 py-2 text-[14px] text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
+            className="hidden px-2.5 py-2 text-sm text-[#767676] transition-colors hover:text-[#111] sm:inline-flex"
           >
             {loginLabel}
           </a>
           <a
             href="#community"
-            className="ml-1 inline-flex h-8 items-center rounded-[4px] border border-[#d1d1d1] bg-white px-3 text-[14px] text-[#111] transition-colors hover:border-[#111]"
+            className="ml-1 inline-flex h-8 items-center rounded-sm border border-[#d1d1d1] bg-white px-3 text-sm text-[#111] transition-colors hover:border-[#111]"
           >
             {submitLabel}
           </a>
@@ -98,7 +98,7 @@ export default function Navbar({
             <button
               key={topic.label}
               type="button"
-              className={`shrink-0 border-b-2 py-3 text-[14px] transition-colors ${
+              className={`shrink-0 border-b-2 py-3 text-sm transition-colors ${
                 index === 0
                   ? "border-[#111] font-bold text-[#111]"
                   : "border-transparent text-[#767676] hover:text-[#111]"
@@ -125,7 +125,7 @@ export default function Navbar({
             <input
               type="search"
               placeholder={searchPlaceholder}
-              className="h-10 w-full rounded-full bg-[#eee] pr-4 pl-10 text-[14px] text-[#111] outline-none placeholder:text-[#767676]"
+              className="h-10 w-full rounded-full bg-[#eee] pr-4 pl-10 text-sm text-[#111] outline-none placeholder:text-[#767676]"
             />
           </form>
           <nav className="flex flex-col" aria-label="Mobile primary">
