@@ -1,6 +1,5 @@
 export interface FooterLink {
   label: string;
-  href: string;
 }
 
 export interface FooterColumn {
@@ -28,21 +27,19 @@ export default function Footer({
       <div className="px-4 py-12 sm:px-6 lg:px-8">
         <div className="grid gap-10 md:grid-cols-[minmax(0,1.2fr)_repeat(3,minmax(0,1fr))]">
           <div>
-            <a href="#hero" className="text-[15px] font-bold text-[#111]">
-              {brand}
-            </a>
+            <p className="text-[15px] font-bold text-[#111]">{brand}</p>
             <p className="mt-3 max-w-xs text-sm leading-[1.6] text-[#767676]">
               {tagline}
             </p>
             <div className="mt-4 flex flex-wrap gap-4">
               {socialLinks.map((link) => (
-                <a
+                <button
                   key={link.label}
-                  href={link.href}
-                  className="text-sm text-[#767676] transition-colors hover:text-[#111]"
+                  type="button"
+                  className="border-0 bg-transparent p-0 text-sm text-[#767676] transition-colors hover:text-[#111]"
                 >
                   {link.label}
-                </a>
+                </button>
               ))}
             </div>
           </div>
@@ -55,12 +52,12 @@ export default function Footer({
               <ul className="mt-3 space-y-2">
                 {column.links.map((link) => (
                   <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-[#767676] transition-colors hover:text-[#111]"
+                    <button
+                      type="button"
+                      className="border-0 bg-transparent p-0 text-sm text-[#767676] transition-colors hover:text-[#111]"
                     >
                       {link.label}
-                    </a>
+                    </button>
                   </li>
                 ))}
               </ul>

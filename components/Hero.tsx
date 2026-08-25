@@ -36,8 +36,8 @@ export default function Hero({
 }: HeroProps) {
   return (
     <section id={id} className="scroll-mt-24 px-6 pt-16 pb-16 lg:px-8 lg:pt-20">
-      <div className="flex flex-col items-stretch gap-10 lg:flex-row lg:items-end">
-        <div className="min-w-0 flex-1">
+      <div className="flex flex-col items-stretch gap-10 lg:flex-row">
+        <div className="flex min-w-0 flex-1 flex-col lg:h-73">
           <h1 className="text-[40px] leading-none font-bold tracking-[-0.03em] text-black">
             {brand}
           </h1>
@@ -48,7 +48,7 @@ export default function Hero({
           </p>
 
           <form
-            className="relative mt-8"
+            className="relative mt-8 lg:mt-auto"
             onSubmit={(event) => event.preventDefault()}
             role="search"
           >
@@ -84,7 +84,7 @@ export default function Hero({
               <p className="mt-1.5 text-[15px] leading-normal whitespace-pre-line text-[#767676]">
                 {promoSubtitle}
               </p>
-            <span className="mt-6 inline-flex h-9 w-fit items-center rounded-full bg-black px-4 text-sm text-white">
+            <span className="mt-auto inline-flex h-9 w-fit items-center rounded-full bg-black px-4 text-sm text-white">
               {promoCta}
             </span>
           </div>

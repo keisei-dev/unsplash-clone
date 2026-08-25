@@ -44,28 +44,28 @@ const footerColumns = [
   {
     title: "Product",
     links: [
-      { label: "Explore photos", href: "#explore" },
-      { label: "Topics", href: "#topics" },
-      { label: "Collections", href: "#explore" },
-      { label: "Unsplash+", href: "#subscribe" },
+      { label: "Explore photos" },
+      { label: "Topics" },
+      { label: "Collections" },
+      { label: "Unsplash+" },
     ],
   },
   {
     title: "Community",
     links: [
-      { label: "Become a contributor", href: "#community" },
-      { label: "Trends", href: "#topics" },
-      { label: "History", href: "#community" },
-      { label: "Blog", href: "#community" },
+      { label: "Become a contributor" },
+      { label: "Trends" },
+      { label: "History" },
+      { label: "Blog" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About", href: "#hero" },
-      { label: "Advertise", href: "#subscribe" },
-      { label: "Press", href: "#community" },
-      { label: "Join the team", href: "#subscribe" },
+      { label: "About" },
+      { label: "Advertise" },
+      { label: "Press" },
+      { label: "Join the team" },
     ],
   },
 ];
@@ -108,6 +108,30 @@ const hero = {
     },
   ],
 };
+
+const extraPhotographers = [
+  "Irene Davila",
+  "Kalen Emsley",
+  "Luca Bravo",
+  "Quin Stevenson",
+  "Roeje",
+  "Toa Heftiba",
+  "Vero Photoarts",
+  "Willian Justen de Vasconcellos",
+];
+
+const extraExplorePhotos = Array.from({ length: 30 }, (_, index) => {
+  const number = String(index + 1).padStart(2, "0");
+  const portrait = index % 3 === 2;
+
+  return {
+    src: `/images/unique-${number}.jpg`,
+    alt: `Original photograph ${index + 1}`,
+    photographer: extraPhotographers[index % extraPhotographers.length],
+    width: portrait ? 900 : 1200,
+    height: portrait ? 1200 : 900,
+  };
+});
 
 const explorePhotos = [
   {
@@ -177,37 +201,80 @@ const explorePhotos = [
     src: "/images/photo-beach.jpg",
     alt: "Sunlit shoreline and ocean waves",
     photographer: "Sean Oulashin",
-    width: 1200,
-    height: 900,
+    width: 2400,
+    height: 1600,
   },
   {
     src: "/images/cover-3d.jpg",
     alt: "Abstract three-dimensional render",
     photographer: "Unsplash+",
-    width: 900,
-    height: 1200,
+    width: 1000,
+    height: 750,
   },
   {
     src: "/images/cover-people.jpg",
     alt: "Portrait study in soft light",
     photographer: "Surface",
-    width: 900,
-    height: 1200,
+    width: 1000,
+    height: 750,
   },
   {
     src: "/images/cover-street.jpg",
     alt: "Street scene with motion and everyday life",
     photographer: "Jasper Boer",
-    width: 1200,
-    height: 900,
+    width: 1000,
+    height: 750,
   },
   {
-    src: "/images/cover-film.jpg",
-    alt: "Analog film tones and grain",
-    photographer: "Annie Spratt",
-    width: 1200,
-    height: 900,
+    src: "/images/cover-travel.jpg",
+    alt: "Travel destination",
+    photographer: "Jasper Boer",
+    width: 1000,
+    height: 750,
   },
+  {
+    src: "/images/cover-architecture.jpg",
+    alt: "Architectural form",
+    photographer: "Mars Vilaubi",
+    width: 1000,
+    height: 750,
+  },
+  {
+    src: "/images/cover-nature.jpg",
+    alt: "Nature landscape",
+    photographer: "David Marcu",
+    width: 1000,
+    height: 750,
+  },
+  {
+    src: "/images/photo-lens.jpg",
+    alt: "Camera lens close-up",
+    photographer: "Duangphorn Wiriya",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/photo-vintage-camera.jpg",
+    alt: "Vintage camera on a wooden table",
+    photographer: "Annie Spratt",
+    width: 900,
+    height: 1200,
+  },
+  {
+    src: "/images/topic-film.jpg",
+    alt: "Film still",
+    photographer: "Annie Spratt",
+    width: 1000,
+    height: 750,
+  },
+  {
+    src: "/images/topic-wallpapers.jpg",
+    alt: "Scenic wallpaper",
+    photographer: "Robert Lukeman",
+    width: 1000,
+    height: 750,
+  },
+  ...extraExplorePhotos,
 ];
 
 const topics = [
@@ -335,9 +402,9 @@ export default function Home() {
           tagline="Make something awesome with free high-resolution photos from creators around the world."
           columns={footerColumns}
           socialLinks={[
-            { label: "Twitter", href: "#community" },
-            { label: "Facebook", href: "#community" },
-            { label: "Instagram", href: "#community" },
+            { label: "Twitter" },
+            { label: "Facebook" },
+            { label: "Instagram" },
           ]}
           copyright="Make something awesome."
         />

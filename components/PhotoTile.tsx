@@ -44,7 +44,7 @@ export default function PhotoTile({
           <span className="sr-only">Like</span>
         </span>
       </div>
-      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 p-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+      <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 bg-linear-to-t from-black/70 to-transparent px-4 pt-16 pb-4 opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
         <span className="truncate text-[15px] font-medium text-white">
           {photographer}
         </span>
