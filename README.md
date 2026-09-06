@@ -69,3 +69,41 @@ Your submission will be marked on:
 - Include clear **setup instructions** (install & run) in your repository.
 
 > **IMPORTANT: Include a link to your DEPLOYED site** (e.g., [Vercel](https://vercel.com/)) **in your submission.**
+
+---
+
+## Deployed site
+
+**[https://unsplash-keisei.vercel.app/](https://unsplash-keisei.vercel.app/)**
+
+---
+
+## Setup (install & run)
+
+```bash
+npm install
+cp .env.example .env.local
+```
+
+Fill in `.env.local`:
+
+- `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` — from [Web3Forms](https://web3forms.com/)
+- `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` — from the Supabase project API settings
+
+Create the subscribers table in the Supabase SQL Editor:
+
+```sql
+create table public.subscribers (
+  id bigint generated always as identity primary key,
+  email text unique not null,
+  created_at timestamptz default now() not null
+);
+```
+
+Enable RLS when prompted. This app writes through the service role key, so RLS can stay on.
+
+```bash
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
