@@ -33,6 +33,14 @@ export default function SubscribeSection({
     setMessage("");
 
     try {
+      const trimmedEmail = email.trim();
+
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedEmail)) {
+        setStatus("error");
+        setMessage("Please enter a valid email address.");
+        return;
+      }
+
       const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
       if (!accessKey) {
@@ -52,8 +60,8 @@ export default function SubscribeSection({
           subject: "New Unsplash landing page subscription",
           from_name: "Unsplash Replica",
           name: "Subscriber",
-          email,
-          message: `${email} subscribed to updates.`,
+          email: trimmedEmail,
+          message: `${trimmedEmail} subscribed to updates.`,
         }),
       });
 
@@ -73,7 +81,7 @@ export default function SubscribeSection({
       const response = await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
+        body: JSON.stringify({ email: trimmedEmail }),
       });
 
       const result = (await response.json()) as {
@@ -83,7 +91,10 @@ export default function SubscribeSection({
 
       if (!response.ok) {
         setStatus("error");
-        setMessage(result.error ?? "Something went wrong. Please try again.");
+        setMessage(
+          result.error ??
+            "Your email was sent, but we could not save it to the database.",
+        );
         return;
       }
 

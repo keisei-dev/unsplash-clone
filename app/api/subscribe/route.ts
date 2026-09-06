@@ -39,9 +39,19 @@ export async function POST(request: Request) {
 
     if (dbError) {
       console.error("Supabase insert failed:", dbError.message);
+      const unreachable = /fetch failed|ENOTFOUND|getaddrinfo/i.test(
+        dbError.message,
+      );
+      const missingTable = /Could not find the table/i.test(dbError.message);
       return NextResponse.json(
-        { error: "Could not save your email. Please try again." },
-        { status: 500 },
+        {
+          error: unreachable
+            ? "Could not reach the database. Check SUPABASE_URL."
+            : missingTable
+              ? "Database table subscribers is missing. Run the SQL in Supabase."
+              : "Could not save your email. Please try again.",
+        },
+        { status: unreachable || missingTable ? 503 : 500 },
       );
     }
   } catch (error) {
