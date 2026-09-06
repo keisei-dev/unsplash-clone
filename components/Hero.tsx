@@ -37,15 +37,17 @@ export default function Hero({
   return (
     <section id={id} className="scroll-mt-24 px-6 pt-16 pb-16 lg:px-8 lg:pt-20">
       <div className="flex flex-col items-stretch gap-10 lg:flex-row">
-        <div className="flex min-w-0 flex-1 flex-col lg:h-73">
-          <h1 className="text-[40px] leading-none font-bold tracking-[-0.03em] text-black">
-            {brand}
-          </h1>
-          <p className="mt-3 text-lg leading-normal text-black">
-            {headline}
-            <br />
-            {headlineLine2}
-          </p>
+        <div className="flex min-w-0 flex-1 flex-col pt-12 pb-8 lg:h-73 lg:pb-0">
+          <div className="lg:mt-16">
+            <h1 className="text-[40px] leading-none font-bold tracking-[-0.03em] text-black">
+              {brand}
+            </h1>
+            <p className="mt-3 text-lg leading-normal text-black">
+              {headline}
+              <br />
+              {headlineLine2}
+            </p>
+          </div>
 
           <form
             className="relative mt-8 lg:mt-auto"
