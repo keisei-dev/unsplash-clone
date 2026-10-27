@@ -4,7 +4,9 @@ A responsive recreation of the Unsplash landing page, built with Next.js (App Ro
 
 **Live demo:** https://unsplash-keisei.vercel.app/
 
-> **Screenshot:** _add a screenshot here (e.g. `docs/screenshot.png`)._ The repo doesn't have one yet.
+![Unsplash clone landing page](docs/hero.png)
+
+![Photo grid section](docs/gallery.png)
 
 ## Features
 
