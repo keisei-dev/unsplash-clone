@@ -1,84 +1,48 @@
-# WD-301: Replicate a Website (Next.js)
+# Unsplash Landing Page Clone
 
-## Assignment Overview
-The goal of this assignment is to **replicate the website linked below** as a **responsive landing page** using **Next.js (App Router)** while following best practices.
+A responsive recreation of the Unsplash landing page, built with Next.js (App Router), TypeScript, and Tailwind CSS, with a working email signup backed by Supabase.
 
-> ## Website to Replicate
-> **[https://unsplash.com/](https://unsplash.com/)**
->
-> Study this website carefully and recreate its layout, sections, and overall design as closely as possible.
->
-> Need extra design inspiration? Browse **[Dribbble Landing Pages](https://dribbble.com/search/landing%20page)**.
+**Live demo:** https://unsplash-keisei.vercel.app/
 
----
+> **Screenshot:** _add a screenshot here (e.g. `docs/screenshot.png`)._ The repo doesn't have one yet.
 
-## Features & Requirements
+## Features
 
-▷ **Single Page Application (SPA)**
-   - The landing page should be a single route (e.g., `/`).
+- **Single-page layout** that mirrors Unsplash: sticky navbar with search and topic tabs, hero, sidebar, topics, explore grid, community, subscribe, and footer sections.
+- **Typed, props-driven components.** Each section is its own component in `components/`, and `app/page.tsx` passes it content through TypeScript interfaces.
+- **Responsive design** using Tailwind breakpoints, plus a collapsible mobile menu.
+- **Smooth scrolling** from in-page anchor links (`scroll-smooth` on `<html>`).
+- **Optimized images** with `next/image` (`PhotoTile`) and local assets in `public/images/`.
+- **Email subscription** in two steps:
+  1. The client checks the email format, then submits to **Web3Forms**, which sends the email notification.
+  2. The client then POSTs to `/api/subscribe`. That route checks the email again, normalizes it, and upserts it into a Supabase `subscribers` table. Duplicates are ignored.
+- **Clear form states** (idle / loading / success / error) in an `aria-live` region. The API returns specific errors for a missing config, an unreachable database, or a missing table.
 
-▷ **Component-Based Structure**
-   - Each section must be its **own component**.
-   - Components **should receive content as props** from `page.tsx`.
-   - You can **reuse components** where applicable.
-   - **TypeScript is required**: type your props properly (interfaces/types).
+## Tech stack
 
-▷ **Responsive Design**
-   - The layout must be **mobile-friendly** and **adaptive**.
-   - Test on common breakpoints (mobile, tablet, desktop).
-   - **Tailwind CSS is recommended**, but any modern styling approach is acceptable.
+- Next.js 16 (App Router), React 19, TypeScript
+- Tailwind CSS v4
+- Supabase (`@supabase/supabase-js`, server-side service-role client)
+- Web3Forms
+- lucide-react icons
+- Deployed on Vercel
 
-▷ **Faithful Replication**
-   - The **layout and structure must match the reference website**.
-   - You may adjust the **color scheme** slightly, but the design should remain clearly recognizable.
+## How it works
 
-▷ **Email Subscription**
-   - The last section should include an **email input field**.
-   - Build the form using **[Web3Forms](https://web3forms.com/)**.
-   - Store the submitted email in a **free online database**, e.g., **[Firebase](https://firebase.google.com/)** or **[MongoDB Atlas](https://www.mongodb.com/atlas)** (free Postgres options like [Supabase](https://supabase.com/) or [Neon](https://neon.tech/) are also fine).
+```
+app/
+  page.tsx                 # page content passed as props to each section
+  layout.tsx               # metadata, smooth scroll
+  api/subscribe/route.ts   # POST: validate + upsert email into Supabase
+components/                # Navbar, Hero, Sidebar, TopicsSection, ExploreSection,
+                           # PhotoTile, CommunitySection, SubscribeSection, Footer
+lib/supabase.ts            # lazily created Supabase admin client (server only)
+public/images/             # local image assets
+```
 
-▷ **Smooth Scroll Navigation**
-   - Navbar buttons should be **clickable** and should scroll smoothly to the corresponding section.
+The Supabase service-role key is read only on the server (`lib/supabase.ts`). The Web3Forms key is public on purpose, because Web3Forms requires submits from the client.
 
-▷ **Clickable Elements**
-   - Buttons and links should have **clear styling** to indicate interactivity (hover/focus states).
-   - Non-functional buttons should still appear as clickable UI elements.
-
----
-
-## Icons & Resources
-- Use icons from:
-  - [Lucide](https://lucide.dev/icons/)
-  - [Radix UI](https://www.radix-ui.com/)
-  - Any other trusted source.
-- Free stock images: [Unsplash](https://unsplash.com/)
-- Use [next/image](https://nextjs.org/docs/app/api-reference/components/image) for optimized images where applicable.
-
----
-
-## Marking Criteria
-Your submission will be marked on:
-- How closely it follows **good industry-standard practices**
-- **Good typography** (font choices, sizes, and spacing)
-- How **fast and responsive** the page is
-
----
-
-## Submission
-- Push your code to **GitHub** with a clean commit history.
-- Include clear **setup instructions** (install & run) in your repository.
-
-> **IMPORTANT: Include a link to your DEPLOYED site** (e.g., [Vercel](https://vercel.com/)) **in your submission.**
-
----
-
-## Deployed site
-
-**[https://unsplash-keisei.vercel.app/](https://unsplash-keisei.vercel.app/)**
-
----
-
-## Setup (install & run)
+## Getting started
 
 ```bash
 npm install
@@ -87,10 +51,13 @@ cp .env.example .env.local
 
 Fill in `.env.local`:
 
-- `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` — from [Web3Forms](https://web3forms.com/)
-- `SUPABASE_URL` and `SUPABASE_SERVICE_ROLE_KEY` — from the Supabase project API settings
+| Variable | Purpose |
+| --- | --- |
+| `NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY` | Access key from [Web3Forms](https://web3forms.com/) |
+| `SUPABASE_URL` | Supabase project URL |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service-role key (server only) |
 
-Create the subscribers table in the Supabase SQL Editor:
+Create the table in the Supabase SQL Editor:
 
 ```sql
 create table public.subscribers (
@@ -100,10 +67,14 @@ create table public.subscribers (
 );
 ```
 
-Enable RLS when prompted. This app writes through the service role key, so RLS can stay on.
+Row Level Security can stay on, because the app writes through the service-role key.
 
 ```bash
-npm run dev
+npm run dev     # http://localhost:3000
+npm run build && npm start
+npm run lint
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+## Background
+
+Built as a course project (WD-301, Advanced Web Development) at Cornerstone International Community College (CICCC). This is a learning exercise and is not affiliated with Unsplash.
